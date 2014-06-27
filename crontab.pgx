@@ -14,11 +14,12 @@ hour: <time>
 dom: <time>
 month: <time>
 dow: <time>
-time: <star> | <number> | <range> | <day>
+time: <star> | <list> | <range> | <day> | <number>
 star: /<STAR>/
 number: /(<DIGIT><DIGIT>?)/
+list: ( <number> %% <COMMA> )2+
 range: <number> /<DASH>/ <number>
-       [ /<SLASH>/ <number> ]?
+       ( /<SLASH>/ <number> )?
 day: /(mon|tue|wed|thu|fri|sat|sun)/
 command: /(<ANY>*)/
 
