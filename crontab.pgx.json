@@ -72,9 +72,6 @@
          }
       ]
    },
-   "day" : {
-      ".rgx" : "(mon|tue|wed|thu|fri|sat|sun)"
-   },
    "dom" : {
       ".ref" : "time"
    },
@@ -106,51 +103,8 @@
    "month" : {
       ".ref" : "time"
    },
-   "number" : {
-      ".rgx" : "([0-9][0-9]?)"
-   },
-   "range" : {
-      ".all" : [
-         {
-            ".ref" : "number"
-         },
-         {
-            ".rgx" : "\\-"
-         },
-         {
-            ".ref" : "number"
-         },
-         {
-            "+max" : 1,
-            ".all" : [
-               {
-                  ".rgx" : "/"
-               },
-               {
-                  ".ref" : "number"
-               }
-            ]
-         }
-      ]
-   },
-   "star" : {
-      ".rgx" : "\\*"
-   },
    "time" : {
-      ".any" : [
-         {
-            ".ref" : "star"
-         },
-         {
-            ".ref" : "number"
-         },
-         {
-            ".ref" : "range"
-         },
-         {
-            ".ref" : "day"
-         }
-      ]
+      ".rgx" : "(\\*|(?:[0-9]{1,2})|(?:[0-9]{1,2})\\-(?:[0-9]{1,2})(?:/(?:[0-9]{1,2}))?|(?:mon|tue|wed|thu|fri|sat|sun))"
    },
    "value" : {
       ".rgx" : "(.*)"

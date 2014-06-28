@@ -23,16 +23,14 @@ hour: time
 dom: time
 month: time
 dow: time
-time: star | number | range | day
+time: /( star | number | range | day )/
 
 star: '*'
 
-number: /( DIGIT DIGIT? )/
+number: /(: DIGIT{1,2} )/
 
-range: number '-' number ( '/' number )?
+range: / number '-' number (: '/' number )? /
 
-day: /(mon|tue|wed|thu|fri|sat|sun)/
+day: /(:mon|tue|wed|thu|fri|sat|sun)/
 
 command: /( ANY* )/
-
-
