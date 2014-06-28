@@ -1,7 +1,10 @@
 {
-   "+top" : "crontab",
+   "+toprule" : "crontab",
    "EOL" : {
       ".rgx" : "\\r?\\n"
+   },
+   "__" : {
+      ".rgx" : "\\s+"
    },
    "blank_line" : {
       ".rgx" : "[\\ \\t]*\\r?\\n"
@@ -18,31 +21,31 @@
             ".ref" : "minute"
          },
          {
-            ".rgx" : "\\s+"
+            ".ref" : "__"
          },
          {
             ".ref" : "hour"
          },
          {
-            ".rgx" : "\\s+"
+            ".ref" : "__"
          },
          {
             ".ref" : "dom"
          },
          {
-            ".rgx" : "\\s+"
+            ".ref" : "__"
          },
          {
             ".ref" : "month"
          },
          {
-            ".rgx" : "\\s+"
+            ".ref" : "__"
          },
          {
             ".ref" : "dow"
          },
          {
-            ".rgx" : "\\s+"
+            ".ref" : "__"
          },
          {
             ".ref" : "command"
