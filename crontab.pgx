@@ -1,26 +1,38 @@
 # This is the Pegex grammar for crontab
-crontab: <comment_line> | <blank_line> |
-         <env_line> | <cron_line>
-comment_line: /<BLANK>*<HASH><ANY>*<EOL>/
-blank_line: /<BLANK>*<EOL>/
-env_line: <variable> /<EQUAL>/ <value> <EOL>
-variable: /(<WORD>+)/
-value: /(<ANY>*)/
-cron_line: <minute> /<WS>+/ <hour> /<WS>+/ <dom>
-           /<WS>+/ <month> /<WS>+/ <dow> /<WS>+/
-           <command> <EOL>
-minute: <time>
-hour: <time>
-dom: <time>
-month: <time>
-dow: <time>
-time: <star> | <list> | <range> | <day> | <number>
-star: /<STAR>/
-number: /(<DIGIT><DIGIT>?)/
-list: ( <number> %% <COMMA> )2+
-range: <number> /<DASH>/ <number>
-       ( /<SLASH>/ <number> )?
-day: /(mon|tue|wed|thu|fri|sat|sun)/
-command: /(<ANY>*)/
+crontab:
+  | comment_line
+  | blank_line
+  | env_line
+  | cron_line
 
+comment_line: / BLANK* HASH ANY* EOL /
+
+blank_line: / BLANK* EOL/
+
+env_line: variable '=' value EOL
+
+variable: /( WORD+ )/
+
+value: /( ANY* )/
+
+cron_line: minute + hour + dom + month + dow + command EOL
+
+minute: time
+hour: time
+dom: time
+month: time
+dow: time
+time: star | range | list | day | number
+
+star: '*'
+
+number: /( DIGIT DIGIT? )/
+
+list: (number %% ',')2+
+
+range: number '-' number ( '/' number )?
+
+day: /(mon|tue|wed|thu|fri|sat|sun)/
+
+command: /( ANY* )/
 
