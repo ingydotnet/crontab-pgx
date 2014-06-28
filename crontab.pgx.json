@@ -56,6 +56,7 @@
       ]
    },
    "crontab" : {
+      "+min" : 0,
       ".any" : [
          {
             ".ref" : "comment_line"

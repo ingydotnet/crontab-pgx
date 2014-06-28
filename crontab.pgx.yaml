@@ -25,6 +25,7 @@ cron_line:
   - .ref: command
   - .ref: EOL
 crontab:
+  +min: 0
   .any:
   - .ref: comment_line
   - .ref: blank_line

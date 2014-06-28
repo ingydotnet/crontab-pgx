@@ -1,9 +1,10 @@
 # This is the Pegex grammar for crontab
-crontab:
+crontab: (
   | comment_line
   | blank_line
   | env_line
   | cron_line
+)*
 
 comment_line: / BLANK* HASH ANY* EOL /
 
