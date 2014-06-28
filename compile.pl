@@ -11,7 +11,7 @@ my %opt;
 GetOptions("to=s" => \$opt{enc});
 my $pc = Pegex::Compiler->new();
 my $gt = Pegex::Input->new(file => "crontab.pgx");
-my $cg = $pc->compile($gt)->tree;
+my $cg = $pc->parse($gt)->combinate;
 if ($opt{enc} eq 'json') {
 	print $pc->to_json($cg);
 }
