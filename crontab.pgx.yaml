@@ -25,13 +25,12 @@ cron_line:
   - .ref: command
   - .ref: EOL
 crontab:
+  +min: 0
   .any:
   - .ref: comment_line
   - .ref: blank_line
   - .ref: env_line
   - .ref: cron_line
-day:
-  .rgx: (mon|tue|wed|thu|fri|sat|sun)
 dom:
   .ref: time
 dow:
@@ -44,36 +43,12 @@ env_line:
   - .ref: EOL
 hour:
   .ref: time
-list:
-  +min: 2
-  .all:
-  - .ref: number
-  - +max: 1
-    .rgx: ','
 minute:
   .ref: time
 month:
   .ref: time
-number:
-  .rgx: ([0-9][0-9]?)
-range:
-  .all:
-  - .ref: number
-  - .rgx: \-
-  - .ref: number
-  - +max: 1
-    .all:
-    - .rgx: /
-    - .ref: number
-star:
-  .rgx: \*
 time:
-  .any:
-  - .ref: star
-  - .ref: range
-  - .ref: list
-  - .ref: day
-  - .ref: number
+  .rgx: (\*|(?:(?:[0-9]{1,2}),?){2,}|(?:[0-9]{1,2})\-(?:[0-9]{1,2})(?:/(?:[0-9]{1,2}))?|(?:mon|tue|wed|thu|fri|sat|sun)|(?:[0-9]{1,2}))
 value:
   .rgx: (.*)
 variable:

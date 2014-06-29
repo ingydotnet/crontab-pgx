@@ -1,9 +1,10 @@
 # This is the Pegex grammar for crontab
-crontab:
+crontab: (
   | comment_line
   | blank_line
   | env_line
   | cron_line
+)*
 
 comment_line: / BLANK* HASH ANY* EOL /
 
@@ -22,17 +23,16 @@ hour: time
 dom: time
 month: time
 dow: time
-time: star | range | list | day | number
+time: /( star | list | range | day | number )/
 
 star: '*'
 
-number: /( DIGIT DIGIT? )/
+number: /(: DIGIT{1,2} )/
 
-list: (number %% ',')2+
+list: /(: number ','? ){2,}/
 
-range: number '-' number ( '/' number )?
+range: / number '-' number (: '/' number )? /
 
-day: /(mon|tue|wed|thu|fri|sat|sun)/
+day: /(:mon|tue|wed|thu|fri|sat|sun)/
 
 command: /( ANY* )/
-
