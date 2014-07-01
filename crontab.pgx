@@ -29,7 +29,7 @@ star: '*'
 
 number: /(: DIGIT{1,2} )/
 
-list: / number (: ',' number)+  ','? /
+list: / (: range | number ) (: ',' (: range | number ) )+ ','? /
 
 range: / number '-' number (: '/' number )? /
 
