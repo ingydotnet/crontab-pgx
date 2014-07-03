@@ -23,11 +23,13 @@ hour: time
 dom: time
 month: time
 dow: time
-time: /( star | number | range | day )/
+time: /( star | list | range | day | number )/
 
 star: '*'
 
 number: /(: DIGIT{1,2} )/
+
+list: / (: range | number ) (: ',' (: range | number ) )+ ','? /
 
 range: / number '-' number (: '/' number )? /
 
