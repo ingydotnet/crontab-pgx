@@ -1,7 +1,7 @@
 GRAMMAR = $(shell echo *.pgx)
-export PERL5LIB=../pegex-pm/lib
-COMPILE_COMMAND = pegex compile $(OPTIONS) --to=
-ALL = $(GRAMMAR:%=%.yaml) $(GRAMMAR:%=%.json)
+export PERL5LIB=$(shell env | grep PERL5LIB):../pegex-pm/lib
+COMPILE_COMMAND = perl compile.pl --to=
+ALL = $(GRAMMAR).yaml $(GRAMMAR).json
 
 all: $(ALL)
 
